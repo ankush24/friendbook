@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  rolify
+  # has_one :role
+  belongs_to :role
+  has_many :microposts, dependent: :destroy
+  has_many :friendships
+  has_many :users, through: :friendships 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

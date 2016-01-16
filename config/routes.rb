@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  # root 'user#index1'
+
 
   devise_for :users
+
+  resources :posts,          only: [:create, :destroy]
+  resources :friendable do
+   member do
+     put 'friend_request' 
+     put 'friend_request_accept'
+     delete 'friend_request_reject'
+    end 
+  end
+
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

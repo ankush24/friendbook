@@ -29,11 +29,11 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    if user.has_role? :voter
-       can :vote, :all
-    else
-       can :comment, :all
-    end        
+    # if user.has_role? :voter
+    #    can :vote, :all
+    # else
+    #    can :comment, :all
+    # end        
 
   end
 end
