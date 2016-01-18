@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :posts,          only: [:create, :destroy]
-  resources :friendable do
+  resources :microposts,          only: [:create, :destroy]
+  resources :friendship do
    member do
      put 'friend_request' 
      put 'friend_request_accept'
