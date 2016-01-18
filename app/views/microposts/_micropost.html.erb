@@ -1,6 +1,6 @@
 <li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user), 'micropost.user' %>
-  <span class="user"><%= link_to micropost.user.email, 'micropost.user' %></span>
+  <%= link_to gravatar_for(micropost.user), '#' %>
+  <span class="user"><%= link_to micropost.user.email, '#' %></span>
   <span class="content">
     <%= micropost.content %>
     <%= image_tag micropost.picture.url if micropost.picture? %>
@@ -12,9 +12,9 @@
                                        data: { confirm: "You sure?" } %>
      
     <% end %>
-    <%= link_to "Like", micropost, method: :get  %>
+    <%= link_to "Like", users_like_path(:post_id => micropost.id)  %>
    
-    <%= link_to "Comment", micropost, method: :get  %>
+    <%= link_to "Comment", '#', method: :get  %>
     
   </span>
 </li>

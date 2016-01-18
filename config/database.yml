@@ -7,12 +7,12 @@ default: &default
 
 development:
   <<: *default
-  database: friendbook_dev1
+  database: friendbook_dev5
 
 test:
   <<: *default
-  database: friendbook_test1
+  database: friendbook_test5
 
 production:
   <<: *default
-  database: friendbook_prod1
+  database: friendbook_prod5

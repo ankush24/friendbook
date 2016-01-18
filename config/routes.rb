@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   # root 'user#index1'
+  get 'users/show'
 
 
   devise_for :users
+  get 'user/like' => 'user#like'
 
-  resources :microposts,          only: [:create, :destroy]
+  resources :microposts,          only: [:index, :create, :destroy]
   resources :friendship do
    member do
      put 'friend_request' 
