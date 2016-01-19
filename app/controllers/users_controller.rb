@@ -1,15 +1,16 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   
 	def show
+    # @user = User.paginate(page: params[:page])
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
-
-    @user_id =  User.find(params[:user_id]) 
+    # @user_id =  User.find(params[:user_id]) 
   end
 
   def index
   	 @users = User.paginate(page: params[:page])
   end
+  
   def new
     @user = User.new
   end
@@ -33,8 +34,5 @@ class UserController < ApplicationController
       flash[:error] = 'No posts available for like'
       redirect_to microposts_path
     end
-  end
-
-
-		
+  end	
 end

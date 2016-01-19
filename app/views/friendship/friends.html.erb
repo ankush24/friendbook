@@ -1,0 +1,19 @@
+<% provide(:title, 'All users') %>
+<h1>Pending Request</h1>
+
+<%#= will_paginate %>
+
+<%#= @friends.inspect %>
+
+<%# if false %>
+<ul class="users">
+   <% @friends.each do |friend| %>
+    <li>
+    	<%= gravatar_for friend.user %>	
+      <%= link_to friend.user.email, '#' %>
+    </li>
+   <% end %>
+</ul>
+<%# end %>
+
+<%#= will_paginate %>

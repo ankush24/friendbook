@@ -1,0 +1,15 @@
+<% provide(:title, 'All users') %>
+<h1>Pending Request</h1>
+
+<%#= will_paginate %>
+
+<ul class="users">
+   <% @requests.each do |request| %>
+    <li>
+      
+      <%= link_to request.from_id, '#' %>
+    </li>
+   <% end %>
+</ul>
+
+<%= will_paginate %>

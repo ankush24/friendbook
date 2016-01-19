@@ -1,20 +1,33 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   # root 'user#index1'
-  get 'users/show'
-
 
   devise_for :users
-  get 'user/like' => 'user#like'
+  get 'users/:id' => 'users#show', as: 'users_show'
+  get 'users'=> 'users#index'
+
+  
+  get 'addfriend/:id' => 'friendship#friend_request', as: 'add_friend'
+
+  get 'requests' => 'friendship#pending_request', as: 'pending_request'
+
+  get 'friends' => 'friendship#friends', as: 'friends'
+ 
+  get 'accecpt_request/:id' => 'friendship#friend_request_accept' , as: 'accecpt_request'
+
+  delete 'reject_request/:id' => 'friendship#friend_request_reject' , as: 'reject_request'
+
+
+  get 'users/like' => 'users#like'
 
   resources :microposts,          only: [:index, :create, :destroy]
-  resources :friendship do
-   member do
-     put 'friend_request' 
-     put 'friend_request_accept'
-     delete 'friend_request_reject'
-    end 
-  end
+  # resources :friendship do
+  #  member do
+  #    put 'friend_request' 
+  #    put 'friend_request_accept'
+  #    delete 'friend_request_reject'
+  #   end 
+  # end
 
  
   # The priority is based upon order of creation: first created -> highest priority.
