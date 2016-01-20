@@ -11,7 +11,7 @@
    
 
     <% if current_user != micropost.user %>
-      <% if current_user.is_friend?(micropost.user.id) %>        
+      <% if current_user.is_friend?(micropost.user.id) || current_user.is_other_user_friend?(micropost.user.id) %>        
         <% if can? :like, @micropost %>
           <% if micropost.is_like?(current_user) %>        
             <%= link_to "like",  like_unlike_path(micropost.id)  %>

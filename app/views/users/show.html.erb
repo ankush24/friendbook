@@ -8,7 +8,7 @@
       </h1>
       <h2>
       <% if current_user.is_friend?(@user.id) || @user.is_friend?(current_user.id) %>
-        <%= link_to "Remove Friend",  reject_request_path(@user.id), class: "btn btn-primary" %>      
+        <%= link_to "Remove Friend",  reject_request_path(@user.id), class: "btn btn-primary", method: :delete %>      
       
 
       <% elsif current_user.is_pending_request?(@user.id) %>

@@ -7,7 +7,7 @@
 
 <%# if false %>
 <ul class="users">
-   <% @friends.each do |friend| %>
+   <% @fr.each do |friend| %>
     <li>
     	<%= gravatar_for friend.user %>	
       <%= link_to friend.user.email, '#' %>

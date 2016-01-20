@@ -22,6 +22,13 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def update
+     @micropost = Micropost.find(params[:id])
+    if @micropost.update_attributes(micropost_params)
+      redirect_to @micropost
+    end
+  end
+
   private
 
     def micropost_params
