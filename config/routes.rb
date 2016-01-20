@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 
   delete 'reject_request/:id' => 'friendship#friend_request_reject' , as: 'reject_request'
 
+  get 'like/:id' => 'users#like' , as: 'like_unlike' 
 
-  get 'users/like' => 'users#like'
+  # get 'users/like' => 'users#like'
 
   resources :microposts,          only: [:index, :create, :destroy]
   # resources :friendship do

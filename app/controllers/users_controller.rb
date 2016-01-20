@@ -8,31 +8,24 @@ class UsersController < ApplicationController
   end
 
   def index
-  	 @users = User.paginate(page: params[:page])
+  	@users = User.paginate(page: params[:page])
   end
   
   def new
     @user = User.new
-  end
+  end  
 
   def like
-    logger.debug '11111111111111111111111'
-    logger.debug params
-    # vr = VoterRelation.new(post_id: params[:post_id], user_id: current_user.id)
-    # vr = current_user.voter_relationships.new(post_id: params[:post_id])
-    post = Micropost.where(id: params[:post_id]).first
+
+    post = Micropost.where(id: params[:id]).first
     if post.present?
-      vr = post.voter_relationships.new(user_id: current_user.id)
-      if vr.save
-        flash[:notice] = 'Liked'
-        redirect_to microposts_path
+      is_liked = VoterRelationship.where(user_id: current_user, micropost_id: post.id, islike: true).first
+      if(is_liked)
+        is_liked.destroy
       else
-        flash[:error] = 'There is some issue liking the post.'
-        redirect_to microposts_path
+        VoterRelationship.create(user_id: current_user.id, micropost_id: post.id, islike: true )
       end
-    else
-      flash[:error] = 'No posts available for like'
-      redirect_to microposts_path
     end
+    redirect_to :back    
   end	
 end

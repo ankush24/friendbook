@@ -7,6 +7,20 @@ class Micropost < ActiveRecord::Base
   validate  :picture_size
   has_many :voter_relationships
 
+  def is_like?(current_user)
+    like = VoterRelationship.where(micropost_id: self.id, user_id: current_user.id).first
+    if like.nil?
+      true
+    else
+      false
+    end
+  end
+
+  def number_of_likes
+    nl = VoterRelationship.where(micropost_id: self.id, islike: true)
+    nl.count
+  end
+
   private
 
     # Validates the size of an uploaded picture.
