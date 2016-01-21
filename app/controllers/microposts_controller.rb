@@ -27,7 +27,13 @@ class MicropostsController < ApplicationController
     if @micropost.update_attributes(micropost_params)
       redirect_to @micropost
     end
+  end  
+
+  def showpost
+    @posts = Micropost.find(params[:id])
+
   end
+
 
   private
 

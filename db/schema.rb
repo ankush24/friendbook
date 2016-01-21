@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118141321) do
+ActiveRecord::Schema.define(version: 20160121131547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commenters", force: :cascade do |t|
+    t.text     "comments"
+    t.integer  "user_id"
+    t.integer  "micropost_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "commenters", ["micropost_id"], name: "index_commenters_on_micropost_id", using: :btree
+  add_index "commenters", ["user_id"], name: "index_commenters_on_user_id", using: :btree
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "from_id"
@@ -60,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160118141321) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role_id"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -83,6 +95,8 @@ ActiveRecord::Schema.define(version: 20160118141321) do
   add_index "voter_relationships", ["micropost_id"], name: "index_voter_relationships_on_micropost_id", using: :btree
   add_index "voter_relationships", ["user_id"], name: "index_voter_relationships_on_user_id", using: :btree
 
+  add_foreign_key "commenters", "microposts"
+  add_foreign_key "commenters", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "voter_relationships", "microposts"
   add_foreign_key "voter_relationships", "users"

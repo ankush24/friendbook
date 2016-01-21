@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'like/:id' => 'users#like' , as: 'like_unlike' 
 
+  get 'posts/:id' =>'microposts#showpost', as: 'posts_show'
+
   # get 'users/like' => 'users#like'
 
   resources :microposts,          only: [:index, :create, :destroy]

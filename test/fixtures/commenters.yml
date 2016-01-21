@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comments: MyText
+  user_id_id: 
+  micropost_id_id: 
+
+two:
+  comments: MyText
+  user_id_id: 
+  micropost_id_id: 

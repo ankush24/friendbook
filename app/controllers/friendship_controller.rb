@@ -14,7 +14,7 @@ class FriendshipController < ApplicationController
 	def friend_request_accept
 	  @friendship = Friendship.where(to_id: current_user.id, from_id: params[:id]).first
 	  @friendship.update_attributes(accepted: true)
-	  redirect_to root_path
+	  redirect_to :back
 	end
 
 	def friend_request_reject
@@ -26,7 +26,7 @@ class FriendshipController < ApplicationController
 	  unless friendship1.nil?
 	  	friendship1.destroy
 	  end
-	  redirect_to root_path
+	  redirect_to :back
 	end
 
 	def pending_request

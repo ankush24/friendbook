@@ -4,8 +4,15 @@ class UsersController < ApplicationController
     # @user = User.paginate(page: params[:page])
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+
     # @user_id =  User.find(params[:user_id]) 
   end
+
+  # def showpost
+  #   @user = User.find(params[:id])
+  #   @micropost = Micropost.Where(id: params[:post_id], user_id: params[:id])
+  # end
+
 
   def index
   	@users = User.paginate(page: params[:page])
@@ -28,4 +35,13 @@ class UsersController < ApplicationController
     end
     redirect_to :back    
   end	
+
+  # def comment
+
+  #   post = Micropost.where(id: params[:id]).first
+  #   if post.present?      
+  #       Commenter.create(user_id: current_user.id, micropost_id: post.id )      
+  #   end
+  #   redirect_to :back    
+  # end 
 end

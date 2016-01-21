@@ -1,6 +1,6 @@
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user), '#' %>
-  <span class="user"><%= link_to micropost.user.email, '#' %></span>
+  <span class="user"><%= link_to micropost.user.email, posts_show_path(micropost.user.id) %></span>
   <span class="content">
     <%= micropost.content %>
     <%= image_tag micropost.picture.url if micropost.picture? %>
@@ -8,29 +8,25 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
 
-   
-
-    <% if current_user != micropost.user %>
-      <% if current_user.is_friend?(micropost.user.id) || current_user.is_other_user_friend?(micropost.user.id) %>        
-        <% if can? :like, @micropost %>
-          <% if micropost.is_like?(current_user) %>        
-            <%= link_to "like",  like_unlike_path(micropost.id)  %>
-             <%= micropost.number_of_likes %>
-          <% else %>
-            <%= link_to "unlike",  like_unlike_path(micropost.id)  %>
-             <%= micropost.number_of_likes %>
-          <% end %>
-        <% end %>
-        <% if can? :comment, @micropost%>
-          <%= link_to "Comment", '#', method: :get  %>
-        <% end %>
-      <% end %>      
-    <% else %>
-      <%= link_to "Comment", '#', method: :get  %>
-      <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
-    <% end %>
-
-    
+    <%# if current_user != micropost.user %>
+      <%# if current_user.is_friend?(micropost.user.id) || current_user.is_other_user_friend?(micropost.user.id) %>        
+        <%# if can? :like, @micropost %>
+          <%# if micropost.is_like?(current_user) %>        
+            <%#= link_to "like",  like_unlike_path(micropost.id)  %>
+             <%#= micropost.number_of_likes %>
+          <%# else %>
+            <%#= link_to "unlike",  like_unlike_path(micropost.id)  %>
+             <%#= micropost.number_of_likes %>
+          <%# end %>
+        <%# end %>
+        <%# if can? :comment, @micropost%>
+          <%#= link_to "Comment", '#', method: :get  %>
+        <%# end %>
+      <%# end %>      
+    <%# else %>
+      <%#= link_to "Comment", '#', method: :get  %>
+      <%#= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
+    <%# end %>
     
   </span>
 </li>

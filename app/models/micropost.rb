@@ -6,6 +6,7 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 140 }
   validate  :picture_size
   has_many :voter_relationships
+  has_many :commenters
 
   def is_like?(current_user)
     like = VoterRelationship.where(micropost_id: self.id, user_id: current_user.id).first
