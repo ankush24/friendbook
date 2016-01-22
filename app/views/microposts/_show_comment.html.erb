@@ -1,0 +1,18 @@
+<!-- <li id="micropost-<%#= micropost.id %>"> -->
+  <%#= link_to gravatar_for(micropost.user), '#' %>
+<% comments.each do |comment| %>
+  <li>
+    <span class="user"><%= link_to comment.user.email, posts_show_path(comment.micropost.id) %></span>
+    <br/>
+    <span class="content">
+      <%= comment.comments %>
+      <%#= image_tag micropost.picture.url if micropost.picture? %>
+    </span>
+    <br/>
+    <br/>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(comment.created_at) %> ago.
+    </span>
+  </li>
+  <hr>
+<%end%>

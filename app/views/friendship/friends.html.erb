@@ -4,7 +4,7 @@
    <% @fr.each do |friend| %>
     <li>
     	<%= gravatar_for friend.user %>	
-      <%= link_to friend.user.email, '#' %>
+      <%= link_to friend.user.email, users_show_path(friend.user.id) %>
     </li>
    <% end %>
 </ul>

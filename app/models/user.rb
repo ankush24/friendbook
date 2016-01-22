@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :users, through: :friendships
   has_many :voter_relationships
   has_many :commenters
+  validates :username, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

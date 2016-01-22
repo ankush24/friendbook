@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show', as: 'users_show'
   get 'users'=> 'users#index'
 
+  resources :microposts,          only: [:index, :edit, :create, :destroy]
   
   get 'addfriend/:id' => 'friendship#friend_request', as: 'add_friend'
 
@@ -21,9 +22,12 @@ Rails.application.routes.draw do
 
   get 'posts/:id' =>'microposts#showpost', as: 'posts_show'
 
+  post 'add_comment' =>  'microposts#add_comment', as: 'add_comment'
+
+  # get 'show_comment' => 'microposts#show_comment', as: 'show_comment'
   # get 'users/like' => 'users#like'
 
-  resources :microposts,          only: [:index, :create, :destroy]
+  
   # resources :friendship do
   #  member do
   #    put 'friend_request' 

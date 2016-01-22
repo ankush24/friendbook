@@ -2,11 +2,12 @@
 <% micropost = @posts %>
 <%= link_to gravatar_for(micropost.user), '#' %>
   <span class="user">
-    <%= link_to micropost.user.email, posts_show_path %>
+    <%= link_to micropost.user.email, posts_show_path(micropost.id) %>
   </span>
   <br/>
   <span class="content">
     <%= micropost.content %>
+    <%= word_wrap(micropost.content, :line_width => 12) %>
     <%= image_tag micropost.picture.url if micropost.picture? %>
   </span>
   <br/>
@@ -26,13 +27,24 @@
           <% end %>
         <% end %>
         <% if can? :comment, @micropost%>
-          <%= link_to "Comment", '#', method: :get  %>
+          <%= link_to "Comment", '#', id: 'comment_btn'  %>
         <% end %>
       <% end %>      
     <% else %>
-      <%= link_to "Comment", '#', method: :get  %>
+      <%= link_to "Comment", '#', id: 'comment_btn'  %>
       <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
+    
+    <hr>
+    <div class= "comments hide">
+      <%=form_for @comment, url: add_comment_path, method: :post do |f| %>
+        <%= f.text_area :comments, placeholder: "Comment" %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :micropost_id , value: micropost.id %>
+        <%= f.submit "Submit", class: 'btn btn-primary' %> 
+      <%end%>
+    </div> 
+    <%=render "microposts/show_comment", comments: @comments %>
 
   </span>
 </li>

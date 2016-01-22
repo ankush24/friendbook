@@ -42,8 +42,10 @@ class FriendshipController < ApplicationController
 	 	 friends = Friendship.where(to_id: current_user.id, accepted: true)
 	 	 friends1 = Friendship.where(from_id: current_user.id, accepted: true)
 
-	 	 @fr = friends + friends1 
-	 	# @friends = Friendship.where(from_id: current_user.id OR to_id: current_user.id AND accepted: true)
+	 	 
+	 # 	@friends = Event :Friendship, :conditions=>['to_id == current_user.id OR from_id == current_user.id']
+		# @friends1 = Friendship.where(accepted: true)
+		@fr = friends + friends1 	
 		#edirect_to pending_request_path 
 		#@friends = current_user.get_friends
 	end

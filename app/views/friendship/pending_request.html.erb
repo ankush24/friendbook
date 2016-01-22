@@ -6,12 +6,17 @@
 <ul class="users">
    <% @requests.each do |request| %>
     <li>
-    	<%= gravatar_for request.user %>	
-      <%= link_to request.user.email, '#' %>
-      <%= link_to "Accept", accecpt_request_path(request.user.id) , class: "btn btn-primary"  %>
-      <%= link_to "Reject", reject_request_path(request.user.id) , class: "btn btn-primary"  %>
+    	<%# if(requests.nil?) %>
+   		<!-- <li>	<h2> There is no Pending Request </h2> </li>	 -->
+   		<%# else %>
+	    	<%= gravatar_for request.user %>	
+	      <%= link_to request.user.email, '#' %>
+	      <%= link_to "Accept", accecpt_request_path(request.user.id) , class: "btn btn-primary"  %>
+	      <%= link_to "Reject", reject_request_path(request.user.id) , class: "btn btn-primary"  %>
+	      <%# end %>
     </li>
    <% end %>
+   
 </ul>
 
 <%#= will_paginate %>

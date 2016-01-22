@@ -1,4 +1,5 @@
 class Commenter < ActiveRecord::Base
-  belongs_to :user_id
-  belongs_to :micropost_id
+  belongs_to :user
+  belongs_to :micropost
+  validates :comments, presence: true
 end
