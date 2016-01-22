@@ -6,21 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
  # roles = Role.create([{name: 'Voter'}, {name: 'Commenter'}])
-
-# users = User.order(:created_at).take(6)
-# 50.times do
-#   content = Faker::Lorem.sentence(5)
-#   users.each { |user| user.microposts.create!(content: content) }
-# end
 User.create!(username: "Demo-Voter",
-						 email: "commenter@test.com",
+						 email: "voter@test.com",
              password:              "password",
              password_confirmation: "password",
              role_id: "Voter")
 
 50.times do |n|
 	username = "Demo_Voter-#{n+1}"
-  email = "voter-#{n+1}@railstutorial.org"
+  email = "demovoter-#{n+1}@railstutorial.org"
   password = "password"
   role = "Voter"
   User.create!(username: username,
@@ -28,4 +22,11 @@ User.create!(username: "Demo-Voter",
                password:              password,
                password_confirmation: password,
                role_id: role)
+end
+
+
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create!(content: content) }
 end
