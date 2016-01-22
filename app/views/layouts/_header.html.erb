@@ -1,46 +1,28 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container" >
-      <%#= link_to image_tag("index.png", alt: "FriendBook logo") %>
         <%= link_to "FriendBook", root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Users",  users_path %></li>            
-            <li><%= link_to "Pending Request",   pending_request_path  %></li>
-            <li><%= link_to "Friends", friends_path %></li> 
-            <li><%= link_to "Log out", destroy_user_session_path, method: "delete" %></li> 
+            <li><%= link_to "Users",  users_path %></li>      
                           
-              <!-- <li class="dropdown">
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  User <b class="caret"></b>
+                  My Account <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><%#= link_to "Edit Profile", edit_user_registration_path %></li>
+                  <li><%= link_to "Friends", friends_path %></li>
+                  <li><%= link_to "Pending Request",   pending_request_path  %></li>
+                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                  
                   
                   <li class="divider"></li>
                   <li>
-                    <%#= link_to "Log out", destroy_user_session_path, method: "delete" %>
+                    <%= link_to "Log out", destroy_user_session_path, method: "delete" %>
                   </li>
                 </ul>
-              </li> -->
-
-
-              <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%#= link_to "Profile", edit_user_registration_path %></li>
-              <li><%#= link_to "Settings", edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li>
-                <%#= link_to "Log out", destroy_user_session_path, method: "delete" %>
-              </li>
-            </ul>
-          </li> -->
-
-
+              </li> 
           <% else %>
               <%= link_to "Sign up", new_user_registration_path %> 
               <%= link_to "Login", new_user_session_path %>
