@@ -12,17 +12,17 @@
 #   content = Faker::Lorem.sentence(5)
 #   users.each { |user| user.microposts.create!(content: content) }
 # end
-User.create!(username: "Demo-Commenter",
+User.create!(username: "Demo-Voter",
 						 email: "commenter@test.com",
              password:              "password",
              password_confirmation: "password",
-             role_id: "Commenter")
+             role_id: "Voter")
 
 50.times do |n|
-	username = "Demo_Commenter-#{n+1}"
-  email = "commenter-#{n+1}@railstutorial.org"
+	username = "Demo_Voter-#{n+1}"
+  email = "voter-#{n+1}@railstutorial.org"
   password = "password"
-  role = "Commenter"
+  role = "Voter"
   User.create!(username: username,
   						 email: email,
                password:              password,
