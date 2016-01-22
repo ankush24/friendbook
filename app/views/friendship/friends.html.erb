@@ -1,10 +1,10 @@
 <% provide(:title, 'All users') %>
-<h1>Friend List</h1>
-<ul class="users">
-   <% @fr.each do |friend| %>
-    <li>
-    	<%= gravatar_for friend.user %>	
-      <%= link_to friend.user.email, users_show_path(friend.user.id) %>
-    </li>
-   <% end %>
-</ul>
+	<h1>Friend List</h1>
+	<ul class="users">
+	   <% @fr.each do |friend| %>
+	    <li>
+	    	<%= gravatar_for friend.user %>	
+	      <%= link_to friend.user.email, users_show_path(friend.user.id) %>
+	    </li>
+	   <% end %>
+	</ul>

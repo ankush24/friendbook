@@ -1,0 +1,18 @@
+- if user_signed_in?
+  .row
+    %aside.col-md-4
+      %section.user_info
+        = render 'shared/user_info'
+      %section.micropost_form
+        = render 'shared/micropost_form'
+    .col-md-8
+      %h3 Post Feed
+      = render 'shared/feed'
+- else
+  .center.jumbotron
+    %h1 Welcome to the FriendBook App
+    %h2
+      Making Communication Easiar.
+    = link_to "Sign up now!",  new_user_registration_path , class: "btn btn-lg btn-primary"
+  = link_to image_tag("index.png", alt: "logo"), |
+    'Friendbook App'                             |

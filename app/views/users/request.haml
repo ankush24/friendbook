@@ -1,0 +1,7 @@
+- provide(:title, 'All users')
+%h1 Pending Request
+%ul.users
+  - @requests.each do |request|
+    %li
+      = link_to request.from_id, '#'
+= will_paginate
