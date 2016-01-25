@@ -2,8 +2,8 @@ class Micropost < ActiveRecord::Base
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
-  validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 250 }
+  validates :user_id, presence: true 
+  validates :content, presence: true, length: { maximum: 250 },:unless => :picture?
   # validates :comments, presence: true, length: { maximum: 100}
   validate  :picture_size
   has_many :voter_relationships
